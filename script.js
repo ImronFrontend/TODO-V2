@@ -30,7 +30,7 @@ elMessage.textContent = "";
 
 function showData(todos){
     elList.innerHTML = "";
-    todos.forEach(item  => {
+    todos.forEach((item, index)  => {
         elList.innerHTML +=`
          <li>
                     <p class="todo-text">${item.inputValue}</p>
@@ -41,9 +41,22 @@ function showData(todos){
                        
                         </div>
                         <i class="ri-pencil-line"></i>
-                        <i class="ri-delete-bin-line"></i>
+                        <i class="ri-delete-bin-line" onclick="deleteItem(${index})" ></i>
                     </div>
                 </li>
         `;
     });
 }
+
+
+function deleteItem(index) {
+    todos = todos.filter((item, i) => {
+        return i !== index;
+});
+
+showData(todos);
+}
+
+
+
+
